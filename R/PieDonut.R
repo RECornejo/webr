@@ -180,7 +180,7 @@ PieDonut=function(data,mapping,
         if(showRatioPie) {
 
                 df$label=ifelse(df$ratio>=showRatioThreshold,
-                        paste0(df$label,"\n(",scales::percent(df$ratio),")"),
+                        paste0(df$label,"\n(",scales::label_percent(accuracy = 0.1)(df$ratio),")"),
                         as.character(df$label))
 
 
@@ -249,9 +249,9 @@ PieDonut=function(data,mapping,
                 df3$ratio1=df3$Freq/total
                 df3
                 if(ratioByGroup) {
-                        df3$ratio=scales::percent(df3$Freq/df3$group)
+                        df3$ratio=scales::label_percent(accuracy = 0.1)(df3$Freq/df3$group)
                 } else {
-                        df3$ratio<-scales::percent(df3$ratio1)
+                        df3$ratio<-scales::label_percent(accuracy = 0.1)(df3$ratio1)
                 }
                 df3$end=cumsum(df3$Freq)
                 df3
